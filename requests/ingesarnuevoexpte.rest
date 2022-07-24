@@ -1,0 +1,47 @@
+POST http://localhost:3000/
+Content-Type: application/json
+
+{ 
+      "numeroExpte": "006210",
+      "anio": 2022,
+      "fuero": "CSS",
+      "caratula": "RAMIREZ RAUL MIGUEL c/ ANSES s/REAJUSTES VARIOS",
+      "demandado": "ANSES",
+      "juzgado": 5,
+      "secretaria": 1
+}
+
+###
+
+POST http://localhost:3000/
+Content-Type: application/json
+
+{ 
+      "numeroExpte": "000020",
+      "anio": 2022,
+      "fuero": "CNT",
+      "caratula": "ROMERO, ROCIO EVELIN C/ OBRA SOCIAL DE LA UNION OBRERA METALURGICA DE LA REPUBLICA ARGENTINA Y OTRO S/DESPIDO",
+      "demandado": "OBRA SOCIAL DE LA UNION OBRERA METALURGICA DE LA REPUBLICA ARGENTINA",
+      "juzgado": 61,
+      "secretaria": ""
+}
+
+###
+
+POST http://localhost:3000/
+Content-Type: application/json
+
+{ 
+      "numeroExpte": "069584",
+      "anio": 2021,
+      "fuero": "CIV",
+      "caratula": "CASCALLAR, NOELIA GISELLE C/ LAZARTE, SILVIA JANET Y OTRO S/DAÑOS Y PERJUICIOS(ACC.TRAN. C/LES. O MUERTE)",
+      "demandado": "LAZARTE, SILVIA JANET",
+      "juzgado": 15,
+      "secretaria": ""
+}
+
+###
+
+POST http://localhost:3000/
+Content-Type: application/json

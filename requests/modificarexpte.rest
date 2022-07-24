@@ -1,0 +1,13 @@
+PUT http://localhost:3000/CSS0282362022
+Content-Type: application/json
+
+{
+    "id":"CSS0282362022",
+    "numeroExpte":"028236",
+    "anio":2022,
+    "fuero":"CSS",
+    "caratula":"TORTEROLO ALDO ERNESTO C/ ANSES S/REAJUSTES VARIOS",
+    "demandado":"ANSES",
+    "juzgado":7,
+    "secretaria":1
+}
