@@ -352,4 +352,8 @@ const exptes = [
     
 ]
 
-module.exports = {exptes};
+const getAll = ()=>{return exptes};
+
+const getOne = (id)=>{return exptes.find(elem => elem.id==id)};
+
+module.exports = {getAll, getOne};

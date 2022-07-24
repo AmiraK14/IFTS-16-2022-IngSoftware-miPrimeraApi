@@ -1,15 +1,16 @@
 const router = require('express').Router();
 const { nextTick } = require('process');
-let {exptes} = require('../dataaccess/entry.js');
+let dao = require('../dataaccess/entry.js');
 
 router.get('/', (req,res)=>{
-    res.status(200).json(exptes);
+    console.log(dao.getAll);
+    res.status(200).json(dao.getAll());
 })
 
 //MUESTRA UN SOLO ELEMENTO, SEGUN SU ID
 router.get('/:id', (req,res,next) =>{
     const id = req.params.id;
-    const elem = exptes.find(elem => elem.id==id);
+    const elem = dao.getOne(id);
     if (elem){
       res.send(elem);
     } else {
@@ -21,7 +22,7 @@ router.get('/:id', (req,res,next) =>{
 //****** POR DEMANDADO
 router.get('/:id', (req, res, next) => {
     const id = req.params.id;
-    const filtrados = exptes.filter(elem=>elem.demandado.includes(id));
+    const filtrados = dao.getAll().filter(elem=>elem.demandado.includes(id));
     res.send(filtrados);
     next();
 })
@@ -29,7 +30,7 @@ router.get('/:id', (req, res, next) => {
 //****** POR FUERO
 router.get('/:id', (req, res, next) => {
     const id = req.params.id;
-    const filtrados = exptes.filter(elem=>elem.fuero==id);
+    const filtrados = dao.getAll().filter(elem=>elem.fuero==id);
     res.send(filtrados);
     next();
 })
@@ -37,7 +38,7 @@ router.get('/:id', (req, res, next) => {
 
 router.post('/', (req,res)=>{
     let expte = req.body;
-    if (!expte || !expte.content){
+    if (!expte || expte.numeroExpte == undefined || expte.anio == undefined || expte.fuero == undefined){
       return res.status(400).json({
         error: 'No se ha ingresado un nuevo expediente'
       })
@@ -53,20 +54,14 @@ router.post('/', (req,res)=>{
       secretaria: expte.secretaria
     }
     console.log(newExpte);
-    exptes = exptes.concat(newExpte);
+    exptes = dao.getAll().concat(newExpte);
     res.json(newExpte);
 })
 
 router.delete('/', (req,res)=>{
     const id = req.params.id;
-    exptes = exptes.filter(elem => elem.id!=id);
+    exptes = dao.getAll().filter(elem => elem.id!=id);
     res.status(204).end();
-})
-
-router.get('/:id', (req, res) => {
-    const id = req.params.id;
-    const filtrados = expte.filter(elem=>elem.demandado==id);
-    res.send(filtrados);
 })
 
 
