@@ -1,10 +1,10 @@
 const router = require('express').Router();
 const { nextTick } = require('process');
 let dao = require('../dataaccess/entry.js');
+let allEntries = dao.getAll();
 
 router.get('/', (req,res)=>{
-    console.log(dao.getAll);
-    res.status(200).json(dao.getAll());
+    res.status(200).json(allEntries);
 })
 
 //MUESTRA UN SOLO ELEMENTO, SEGUN SU ID
@@ -22,7 +22,7 @@ router.get('/:id', (req,res,next) =>{
 //****** POR DEMANDADO
 router.get('/:id', (req, res, next) => {
     const id = req.params.id;
-    const filtrados = dao.getAll().filter(elem=>elem.demandado.includes(id));
+    const filtrados = allEntries.filter(elem=>elem.demandado.includes(id));
     res.send(filtrados);
     next();
 })
@@ -30,7 +30,7 @@ router.get('/:id', (req, res, next) => {
 //****** POR FUERO
 router.get('/:id', (req, res, next) => {
     const id = req.params.id;
-    const filtrados = dao.getAll().filter(elem=>elem.fuero==id);
+    const filtrados = allEntries.filter(elem=>elem.fuero==id);
     res.send(filtrados);
     next();
 })
@@ -54,51 +54,26 @@ router.post('/', (req,res)=>{
       secretaria: expte.secretaria
     }
     console.log(newExpte);
-    exptes = dao.getAll().concat(newExpte);
+    allEntries = allEntries.concat(newExpte);
     res.json(newExpte);
 })
 
-router.delete('/', (req,res)=>{
+router.delete('/:id', (req,res)=>{
     const id = req.params.id;
-    exptes = dao.getAll().filter(elem => elem.id!=id);
-    res.status(204).end();
-})
-
-
-router.put('/', (req,res)=>{
-    res.status(200).json({
-        message: 'estoy vivo por el put'
-    });
-})
-
-router.get('/:id', (req,res)=>{
-    res.status(200).json({
-        message: 'estoy vivo por el get'
-    });
-})
-
-router.post('/:id', (req,res)=>{
-    res.status(200).json({
-        message: 'estoy vivo por el post'
-    });
-})
-
-router.delete('/', (req,res)=>{
-    res.status(200).json({
-        message: 'estoy vivo por el delete'
+    allEntries = dao.delOne(id);
+    res.status(204).json({
+        message: "Expte "+id+" eliminado"
     });
 })
 
 router.put('/:id', (req,res)=>{
     const id = req.params.id;
-    const index = exptes.findIndex((elem)=>elem.id==id);
-    if (index>=0){
-        exptes[index]=req.body;
+    if (dao.updateOne(id,req.body)>=0){
         res.sendStatus(202);
     } else {
         res.sendStatus(404);
     }
-})
+});
 
 router.patch('/:id', (req,res)=>{
     res.status(200).json({

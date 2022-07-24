@@ -356,4 +356,16 @@ const getAll = ()=>{return exptes};
 
 const getOne = (id)=>{return exptes.find(elem => elem.id==id)};
 
-module.exports = {getAll, getOne};
+const delOne = (id)=>{return exptes.filter(elem => elem.id!=id)};
+
+const updateOne = (id,body) => {
+    const index = exptes.findIndex((elem)=>elem.id==id);
+    if (index>=0){
+        exptes[index]=body;
+        return true
+    }
+    return false
+}
+
+
+module.exports = {getAll, getOne, delOne, updateOne};

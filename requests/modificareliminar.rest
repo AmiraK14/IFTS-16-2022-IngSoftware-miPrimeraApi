@@ -11,3 +11,7 @@ Content-Type: application/json
     "juzgado":7,
     "secretaria":1
 }
+
+###
+
+DELETE http://localhost:3000/CSS0282362022
