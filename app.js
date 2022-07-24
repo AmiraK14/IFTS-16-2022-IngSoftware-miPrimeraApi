@@ -3,6 +3,7 @@ const cors = require("cors");
 const middleware = require('./utils/middleware.js');
 const keepalive = require('./controller/keepAlive.js')
 const entryController = require('./controller/entry.js');
+const loginController = require('./controller/login');
 
 const app = express();
 
@@ -12,9 +13,8 @@ app.use(express.json());
 app.use(middleware.consoleData);
 
 app.use('/keepalive', keepalive);
-app.use('/',entryController)
-
-//app.use('/login',loginController);
+app.use('/expedientes',entryController)
+app.use('/login',loginController);
 //app.use('/post', postController);
 
 //app.get('/',middleware.getIndex);
