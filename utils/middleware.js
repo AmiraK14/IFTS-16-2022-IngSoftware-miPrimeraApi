@@ -24,9 +24,12 @@ const processToken = (req,res,next)=>{
 }
 
 const validarUserLogin = (req,res,next)=>{
+    if (!req.token){
+        return res.status(401).json({error: 'token missing'})
+    }
     const decodeToken = jwt.verify(req.token, process.env.JWTSECRET);
-    if (!req.token||!decodeToken.id){
-        return res.status(401).json({error: 'token missing or invalid'});
+    if (!decodeToken.id){
+        return res.status(401).json({error: 'token invalid'});
     }
     req.user = decodeToken;
     next();
