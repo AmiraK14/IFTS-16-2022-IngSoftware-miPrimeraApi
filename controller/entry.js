@@ -84,7 +84,7 @@ router.post('/', middleware.validarUserLogin, (req,res)=>{
 })
 
 
-router.delete('/:id', (req,res)=>{
+router.delete('/:id', middleware.validarUserLogin, (req,res)=>{
     const id = req.params.id;
     allEntries = dao.delOne(id);
     res.status(204).json({
@@ -92,7 +92,7 @@ router.delete('/:id', (req,res)=>{
     });
 })
 
-router.put('/:id', (req,res)=>{
+router.put('/:id', middleware.validarUserLogin, (req,res)=>{
     const id = req.params.id;
     if (dao.updateOne(id,req.body)>=0){
         res.sendStatus(202);

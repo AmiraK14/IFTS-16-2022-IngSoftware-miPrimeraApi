@@ -1,0 +1,25 @@
+# @name login
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+    "username": "admin",
+    "password": "123456"
+}
+
+###
+
+PUT http://localhost:3000/expedientes/CSS0282362022
+Content-Type: application/json
+Authorization: Bearer {{ login.response.body.token }}
+
+{
+    "id":"CSS0282362022",
+    "numeroExpte":"028236",
+    "anio":2022,
+    "fuero":"CSS",
+    "caratula":"TORTEROLO ALDO ERNESTO C/ ANSES S/REAJUSTES VARIOS",
+    "demandado":"ANSES",
+    "juzgado":7,
+    "secretaria":1
+}
