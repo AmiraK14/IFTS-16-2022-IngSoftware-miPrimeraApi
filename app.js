@@ -11,14 +11,11 @@ app.use(cors());
 app.use(express.json());
 
 app.use(middleware.consoleData);
+app.use(middleware.processToken);
 
 app.use('/keepalive', keepalive);
 app.use('/expedientes',entryController)
 app.use('/login',loginController);
-//app.use('/post', postController);
-
-//app.get('/',middleware.getIndex);
-//app.get('/listadoPeliculas',middleware.getListadoPeliculas);
 
 app.use(middleware.unknownEndpoint);
 

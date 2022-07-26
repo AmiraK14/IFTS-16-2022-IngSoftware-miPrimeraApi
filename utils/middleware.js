@@ -1,3 +1,6 @@
+const jwt = require("jsonwebtoken");
+require('dotenv').config();
+
 const consoleData = (req,res,next)=> {
     console.log('Method: '+req.method);
     console.log('Path: '+req.path);
@@ -6,17 +9,27 @@ const consoleData = (req,res,next)=> {
     next();
 };
 
-const getIndex = (req,res)=>{
-    res.send('<h1>CINE 3.0</h1><h3>Bienvenidos a la videoteca mas completa de la web</h3>');
-}
-
-const getListadoPeliculas = (req,res)=>{
-    res.send('Hola, estas son las peliculas');
-}
-
-
 const unknownEndpoint = (req,res)=> {
     res.status(404).send({error:"unknown endpoint"});
 }
 
-module.exports = {consoleData, unknownEndpoint, getIndex, getListadoPeliculas};
+const processToken = (req,res,next)=>{
+    const authorization = req.get('authorization');
+    if(authorization && authorization.toLowerCase().startsWith('bearer ')){
+        req.token = authorization.substring(7);
+    } else {
+        req.token = null;
+    };
+    next();
+}
+
+const validarUserLogin = (req,res,next)=>{
+    const decodeToken = jwt.verify(req.token, process.env.JWTSECRET);
+    if (!req.token||!decodeToken.id){
+        return res.status(401).json({error: 'token missing or invalid'});
+    }
+    req.user = decodeToken;
+    next();
+}
+
+module.exports = {consoleData, unknownEndpoint, processToken, validarUserLogin};

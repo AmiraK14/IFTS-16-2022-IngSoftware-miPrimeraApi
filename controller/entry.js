@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const middleware = require('../utils/middleware')
 const { nextTick } = require('process');
 let dao = require('../dataaccess/entry.js');
 let allEntries = dao.getAll();
@@ -35,8 +36,31 @@ router.get('/:id', (req, res, next) => {
     next();
 })
 
+//POST FUNCIONANDO SIN USUARIO LOGUEADO
+/*router.post('/', (req,res)=>{
+    let expte = req.body;
+    if (!expte || expte.numeroExpte == undefined || expte.anio == undefined || expte.fuero == undefined){
+      return res.status(400).json({
+        error: 'No se ha ingresado un nuevo expediente'
+      })
+    }
+    let newExpte = {
+      id: expte.fuero+expte.numeroExpte+expte.anio,
+      numeroExpte: expte.numeroExpte,
+      anio: expte.anio,
+      fuero: expte.fuero,
+      caratula: expte.caratula,
+      demandado: expte.demandado,
+      juzgado: expte.juzgado,
+      secretaria: expte.secretaria
+    }
+    console.log(newExpte);
+    allEntries = allEntries.concat(newExpte);
+    res.json(newExpte);
+})*/
 
-router.post('/', (req,res)=>{
+//POST CON USUARIO LOGUEADO
+router.post('/', middleware.validarUserLogin, (req,res)=>{
     let expte = req.body;
     if (!expte || expte.numeroExpte == undefined || expte.anio == undefined || expte.fuero == undefined){
       return res.status(400).json({
@@ -57,6 +81,7 @@ router.post('/', (req,res)=>{
     allEntries = allEntries.concat(newExpte);
     res.json(newExpte);
 })
+
 
 router.delete('/:id', (req,res)=>{
     const id = req.params.id;
