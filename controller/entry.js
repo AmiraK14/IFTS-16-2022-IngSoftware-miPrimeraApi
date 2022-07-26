@@ -75,7 +75,8 @@ router.post('/', middleware.validarUserLogin, (req,res)=>{
       caratula: expte.caratula,
       demandado: expte.demandado,
       juzgado: expte.juzgado,
-      secretaria: expte.secretaria
+      secretaria: expte.secretaria,
+      user: req.user
     }
     console.log(newExpte);
     allEntries = allEntries.concat(newExpte);
