@@ -94,17 +94,12 @@ router.delete('/:id', middleware.validarUserLogin, (req,res)=>{
 
 router.put('/:id', middleware.validarUserLogin, (req,res)=>{
     const id = req.params.id;
-    if (dao.updateOne(id,req.body)>=0){
+    if (dao.updateOne(id,req.body)){
         res.sendStatus(202);
     } else {
         res.sendStatus(404);
     }
 });
 
-router.patch('/:id', (req,res)=>{
-    res.status(200).json({
-        message: 'estoy vivo por el patch'
-    });
-})
 
 module.exports = router;

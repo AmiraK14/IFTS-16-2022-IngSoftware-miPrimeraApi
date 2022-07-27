@@ -367,5 +367,6 @@ const updateOne = (id,body) => {
     return false
 }
 
+const saveNew = (body)=> {exptes.push(body)};
 
-module.exports = {getAll, getOne, delOne, updateOne};
+module.exports = {getAll, getOne, delOne, updateOne, saveNew};
