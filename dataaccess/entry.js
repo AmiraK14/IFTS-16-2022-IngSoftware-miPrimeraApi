@@ -352,7 +352,14 @@ const exptes = [
     
 ]
 
-const getAll = ()=>{return exptes};
+const getAll = (filter)=>{
+    console.log(filter);
+    if (Object.keys(filter).length === 0){
+        return exptes
+    } else {
+        console.log(filter);
+    }
+};
 
 const getOne = (id)=>{return exptes.find(elem => elem.id==id)};
 

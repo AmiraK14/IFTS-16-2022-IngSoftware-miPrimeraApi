@@ -1,1 +1,5 @@
 GET http://localhost:3000/expedientes
+
+###
+
+GET http://localhost:3000/expedientes?demandado=ANSES&fuero=CSS&juzgado=5
