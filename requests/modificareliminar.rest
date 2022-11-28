@@ -1,4 +1,4 @@
-PUT http://localhost:3000/expedientes/CSS0282362022
+PUT http://localhost:3000/expedientes/CSS488642022
 Content-Type: application/json
 
 {
@@ -14,4 +14,4 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:3000/expedientes/CSS0282362022
+DELETE http://localhost:3000/expedientes/CSS488642022

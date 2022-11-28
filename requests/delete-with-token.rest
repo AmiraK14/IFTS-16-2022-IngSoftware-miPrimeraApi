@@ -9,5 +9,5 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:3000/expedientes/CSS0038072018
+DELETE http://localhost:3000/expedientes/CNT0000202022
 Authorization: Bearer {{ login.response.body.token }}

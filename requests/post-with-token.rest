@@ -14,11 +14,131 @@ Content-Type: application/json
 Authorization: Bearer {{ login.response.body.token }}
 
 { 
-      "numeroExpte": "000020",
-      "anio": 2022,
-      "fuero": "CNT",
+      "numeroexpte": "000020",
+      "anio": "2022",
+      "idfuero": "CNT",
       "caratula": "ROMERO, ROCIO EVELIN C/ OBRA SOCIAL DE LA UNION OBRERA METALURGICA DE LA REPUBLICA ARGENTINA Y OTRO S/DESPIDO",
       "demandado": "OBRA SOCIAL DE LA UNION OBRERA METALURGICA DE LA REPUBLICA ARGENTINA",
-      "juzgado": 61,
-      "secretaria": ""
+      "juzgado": "61",
+      "secretaria": "",
+      "idObjeto":"1"
+}
+
+###
+POST http://localhost:3000/expedientes
+Content-Type: application/json
+Authorization: Bearer {{ login.response.body.token }}
+
+{ 
+      "numeroexpte": "48864",
+      "anio": "2022",
+      "idfuero": "CSS",
+      "caratula": "MARRANA ALICIA MARIA c/ ANSES s/AMPAROS Y SUMARISIMOS",
+      "demandado": "ANSES",
+      "juzgado": "5",
+      "secretaria": "1",
+      "objeto":{
+            "objeto": "AMPAROS Y SUMARISIMOS"
+      }
+}
+
+###
+
+POST http://localhost:3000/expedientes
+Content-Type: application/json
+Authorization: Bearer {{ login.response.body.token }}
+
+{ 
+      "numeroexpte": "000020",
+      "anio": "2020",
+      "idfuero": "CNT",
+      "caratula": "ROMERO, ROCIO EVELIN C/ OBRA SOCIAL DE LA UNION OBRERA METALURGICA DE LA REPUBLICA ARGENTINA Y OTRO S/DESPIDO",
+      "demandado": "OBRA SOCIAL DE LA UNION OBRERA METALURGICA DE LA REPUBLICA ARGENTINA",
+      "juzgado": "61",
+      "secretaria": "",
+      "objeto":{
+            "objeto": "DESPIDO"
+      }
+}
+
+###
+
+POST http://localhost:3000/expedientes
+Content-Type: application/json
+Authorization: Bearer {{ login.response.body.token }}
+
+{ 
+      "numeroexpte": "000020",
+      "anio": "2018",
+      "idfuero": "CNT",
+      "caratula": "ROMERO, ROCIO EVELIN C/ OBRA SOCIAL DE LA UNION OBRERA METALURGICA DE LA REPUBLICA ARGENTINA Y OTRO S/DESPIDO",
+      "demandado": "OBRA SOCIAL DE LA UNION OBRERA METALURGICA DE LA REPUBLICA ARGENTINA",
+      "juzgado": "61",
+      "secretaria": "",
+      "objeto":{
+            "objeto": ""
+      }
+
+}
+
+###
+
+POST http://localhost:3000/expedientes
+Content-Type: application/json
+Authorization: Bearer {{ login.response.body.token }}
+
+{ 
+      "numeroexpte": "36699",
+      "anio": "2022",
+      "idfuero": "CNT",
+      "caratula": "BIANCHI, FERNANDO ALVARO C/ DETTORRE, PABLO ESTEBAN Y OTRO S/DESPIDO",
+      "demandado": "DETTORRE, PABLO ESTEBAN Y OTRO",
+      "juzgado": "2",
+      "secretaria": "",
+      "objeto":{
+            "id": "1"
+      }
+
+}
+
+
+###
+
+POST http://localhost:3000/expedientes
+Content-Type: application/json
+Authorization: Bearer {{ login.response.body.token }}
+
+{ 
+      "numeroexpte": "034349",
+      "anio": "2007",
+      "idfuero": "CNT",
+      "caratula": "LIEMICH MIRNA BEATRIZ C/ RUDICH PAOLA Y OTRO S/DESPIDO",
+      "demandado": "RUDICH PAOLA Y OTRO",
+      "juzgado": "64",
+      "secretaria": "",
+      "objeto":{
+            "objeto": "DESPIDO"
+      }
+
+}
+
+###
+
+
+POST http://localhost:3000/expedientes
+Content-Type: application/json
+Authorization: Bearer {{ login.response.body.token }}
+
+{ 
+      "numeroexpte": "007188",
+      "anio": "2020",
+      "idfuero": "CSS",
+      "caratula": "BENITEZ MARIA DEL PILAR Y OTRO C/ ANSES S/AMPAROS Y SUMARISIMOS",
+      "demandado": "ANSES",
+      "juzgado": "2",
+      "secretaria": "1",
+      "objeto":{
+            "objeto": "AMPAROS Y SUMARISIMOS"
+      }
+
 }

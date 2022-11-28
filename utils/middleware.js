@@ -27,6 +27,7 @@ const validarUserLogin = (req,res,next)=>{
     if (!req.token){
         return res.status(401).json({error: 'token missing'})
     }
+    console.log(req.token);
     const decodeToken = jwt.verify(req.token, process.env.JWTSECRET);
     if (!decodeToken.id){
         return res.status(401).json({error: 'token invalid'});

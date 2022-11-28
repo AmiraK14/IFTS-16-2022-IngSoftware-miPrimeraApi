@@ -1,5 +1,9 @@
-GET http://localhost:3000/expedientes
+GET http://localhost:3000/expedientes/
 
 ###
 
-GET http://localhost:3000/expedientes?juzgado=5&demandado=ANSES
+GET http://localhost:3000/expedientes?demandado=ANSES
+
+###
+
+GET http://localhost:3000/expedientes/CSS213252010
